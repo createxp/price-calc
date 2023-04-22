@@ -38,6 +38,7 @@ const PriceCalculator = () => {
 
     const generatePDF = async () => {
         const element = pdfRef.current
+        if (!element) return
         const canvas = await html2canvas(element)
         const data = canvas.toDataURL('image/png');
         const pdf = new jsPDF('portrait', 'pt', 'a4');
