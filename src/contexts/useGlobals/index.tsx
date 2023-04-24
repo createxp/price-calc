@@ -1,23 +1,40 @@
 import { HourlyRateProfileType } from "@/types";
 import { useRouter } from "next/router";
-import React, { createContext, useContext, useEffect, useMemo, useState } from "react"
+import React, { createContext, useContext, useEffect, useMemo, useRef, useState } from "react"
 import { Toaster } from "react-hot-toast";
 
 interface GlobalContextType {
     selectedTab: number;
-    setSelectedTab: (selectedTab: number) => void;
+    setSelectedTab: React.Dispatch<React.SetStateAction<number>>;
     hourlyRateProfiles: HourlyRateProfileType[];
-    setHourlyRateProfiles: (hourlyRateProfiles: HourlyRateProfileType[]) => void;
+    setHourlyRateProfiles: React.Dispatch<React.SetStateAction<HourlyRateProfileType[]>>;
     loading: boolean;
-    setLoading: (loading: boolean) => void;
+    setLoading: React.Dispatch<React.SetStateAction<boolean>>;
     userCurrency: {
         currency: string;
         symbol: string;
     }
-    setUserCurrency: (userCurrency: {
+    setUserCurrency: React.Dispatch<React.SetStateAction<{
         currency: string;
         symbol: string;
-    }) => void;
+    }>>;
+    rows: {
+        id: number;
+        title: string;
+        hours: string;
+        rate: string;
+        total: string;
+    }[];
+    setRows: React.Dispatch<React.SetStateAction<{
+        id: number;
+        title: string;
+        hours: string;
+        rate: string;
+        total: string;
+    }[]>>;
+    grandTotal: string;
+    setGrandTotal: React.Dispatch<React.SetStateAction<string>>;
+    pdfRef: React.MutableRefObject<any>;
 }
 const GlobalContext = createContext<GlobalContextType>({} as GlobalContextType)
 
@@ -53,6 +70,24 @@ export const GlobalProvider = ({ children }: GlobalProviderProps) => {
     })
     const [hourlyRateProfiles, setHourlyRateProfiles] = useState<HourlyRateProfileType[]>([])
 
+    const [rows, setRows] = useState<{
+        id: number;
+        title: string;
+        hours: string;
+        rate: string;
+        total: string;
+    }[]>([{
+        id: Math.random() * 1000,
+        title: '',
+        hours: '',
+        rate: '',
+        total: ''
+    }])
+
+    const [grandTotal, setGrandTotal] = useState<string>('')
+
+    const pdfRef = useRef(null)
+
     // useMemo
     const value = useMemo(() => {
         return {
@@ -63,9 +98,14 @@ export const GlobalProvider = ({ children }: GlobalProviderProps) => {
             hourlyRateProfiles,
             setHourlyRateProfiles,
             userCurrency,
-            setUserCurrency
+            setUserCurrency,
+            rows,
+            setRows,
+            grandTotal,
+            setGrandTotal,
+            pdfRef
         }
-    }, [selectedTab, loading, hourlyRateProfiles, userCurrency])
+    }, [selectedTab, loading, hourlyRateProfiles, userCurrency, rows, grandTotal, pdfRef])
 
     return (
         <GlobalContext.Provider value={value}>

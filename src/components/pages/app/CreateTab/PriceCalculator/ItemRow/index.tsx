@@ -7,7 +7,7 @@ import { FiTrash2 } from 'react-icons/fi'
 const ItemRow = ({
     index,
     state,
-    setState
+    setState,
 }: {
     index: number
     state: {
@@ -28,7 +28,7 @@ const ItemRow = ({
     const { hourlyRateProfiles, userCurrency } = useGlobals()
 
     const calculate = () => {
-        const subtotal = Number(state.hours) * Number(state.rate)
+        const subtotal = Number(hours) * Number(rate)
         setState((prev) => {
             const newState = [...prev]
             newState[index].total = subtotal.toString()
@@ -36,9 +36,17 @@ const ItemRow = ({
         })
     }
 
+    const {
+        id,
+        title,
+        hours,
+        rate,
+        total,
+    } = state
+
     useEffect(() => {
         calculate()
-    }, [state.hours, state.rate])
+    }, [hours, rate])
 
     return (
         <div className="flex gap-2">
@@ -47,7 +55,7 @@ const ItemRow = ({
                 name='title'
                 placeholder='Enter a title for your project'
                 type='text'
-                value={state.title}
+                value={title}
                 onChange={(e) => {
                     setState((prev) => {
                         const newState = [...prev]
@@ -56,13 +64,14 @@ const ItemRow = ({
                     })
                     // setTitle(e.target.value)
                 }}
+                max={32}
             />
             <Input
                 id='hours'
                 name='hours'
                 placeholder='Enter the number of hours'
                 type='text'
-                value={state.hours}
+                value={hours}
                 onChange={(e) => {
                     // check if the value is a number
                     if (isNaN(Number(e.target.value))) {
@@ -83,7 +92,7 @@ const ItemRow = ({
                 id='rate'
                 name='rate'
                 placeholder='Select Profile'
-                value={state.rate}
+                value={rate}
                 onChange={(e) => {
                     setState((prev) => {
                         const newState = [...prev]
@@ -101,7 +110,7 @@ const ItemRow = ({
                 name='subtotal'
                 placeholder='Subtotal'
                 type='text'
-                value={`${userCurrency.symbol} ${state.total}`}
+                value={`${userCurrency.symbol} ${total}`}
                 onChange={(e) => { }}
                 wrapperClassName='w-fit'
                 disabled
@@ -115,7 +124,7 @@ const ItemRow = ({
                         setState((prev) => {
                             const newState = [...prev]
                             // delete the item from the array with the id
-                            const filtered = newState.filter((item) => item.id !== state.id)
+                            const filtered = newState.filter((item) => item.id !== id)
                             return filtered
                         })
                     }}
