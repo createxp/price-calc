@@ -35,6 +35,7 @@ interface GlobalContextType {
     grandTotal: string;
     setGrandTotal: React.Dispatch<React.SetStateAction<string>>;
     pdfRef: React.MutableRefObject<any>;
+    screenSize: 'mobile' | 'tablet' | 'desktop';
 }
 const GlobalContext = createContext<GlobalContextType>({} as GlobalContextType)
 
@@ -88,6 +89,27 @@ export const GlobalProvider = ({ children }: GlobalProviderProps) => {
 
     const pdfRef = useRef(null)
 
+    const [screenSize, setScreenSize] = useState<'mobile' | 'tablet' | 'desktop'>('desktop')
+    useEffect(() => {
+        const handleResize = () => {
+            if (window.innerWidth > 1024) {
+                setScreenSize('desktop')
+            } else if (window.innerWidth > 760) {
+                setScreenSize('tablet')
+            } else {
+                setScreenSize('mobile')
+            }
+            // console.log('screenSize', screenSize);
+        }
+
+        window.addEventListener('resize', handleResize)
+        handleResize()
+
+        return () => {
+            window.removeEventListener('resize', handleResize)
+        }
+    }, [])
+
     // useMemo
     const value = useMemo(() => {
         return {
@@ -103,9 +125,10 @@ export const GlobalProvider = ({ children }: GlobalProviderProps) => {
             setRows,
             grandTotal,
             setGrandTotal,
-            pdfRef
+            pdfRef,
+            screenSize
         }
-    }, [selectedTab, loading, hourlyRateProfiles, userCurrency, rows, grandTotal, pdfRef])
+    }, [selectedTab, loading, hourlyRateProfiles, userCurrency, rows, grandTotal, pdfRef, screenSize])
 
     return (
         <GlobalContext.Provider value={value}>

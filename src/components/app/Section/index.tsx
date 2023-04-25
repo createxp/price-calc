@@ -13,7 +13,7 @@ const Section = ({
 }: SectionProps) => {
     return (
         <div className={[
-            "lg:px-40 p-4 flex flex-col",
+            "lg:px-40 md:px-12 px-6 flex flex-col",
             className
         ].join(' ')}>
             {children}
