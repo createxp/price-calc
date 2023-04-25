@@ -28,7 +28,7 @@ const CreateNewProfile = () => {
             <h3 className='w-full text-xl font-semibold'>
                 Create New Profile
             </h3>
-            <div className="flex flex-col gap-9 justify-center items-center w-full mt-6">
+            <div className="flex flex-col gap-2 md:gap-10 justify-center items-center w-full md:mt-6">
                 <Input
                     id='profileName'
                     label='Profile Name'
@@ -38,7 +38,7 @@ const CreateNewProfile = () => {
                     value={profileName}
                     onChange={(e) => setProfileName(e.target.value)}
                 />
-                <div className='flex justify-center items-center gap-6 w-full'>
+                <div className='flex justify-center items-center gap-2 md:gap-6 w-full flex-col md:flex-row'>
                     <Input
                         id='hourlyRate'
                         label='Hourly Rate'
@@ -79,7 +79,7 @@ const CreateNewProfile = () => {
                     />
                 </div>
             </div>
-            <Button type='submit' text={'Add New Profile'} icon={<FiPlus size={18} />} wFull />
+            <Button className='text-sm md:text-base' type='submit' text={'Add New Profile'} icon={<FiPlus className='text-base md:text-2xl' />} wFull />
         </form>
     )
 }

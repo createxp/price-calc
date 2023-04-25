@@ -35,15 +35,17 @@ const TopBar = () => {
         <div className='flex justify-between w-full'>
             <div className='flex gap-4'>
                 <Button
+                    className='text-sm md:text-base'
                     text='Go Back'
                     onClick={() => router.push('/app')}
-                    icon={<FiArrowLeft size={20} />}
+                    icon={<FiArrowLeft className='text-base md:text-2xl' />}
                 />
             </div>
-            <div className="flex gap-4">
+            <div className="flex gap-4 flex-col md:flex-row">
                 <ReactToPrint
                     trigger={() => (
                         <Button
+                            className='text-sm md:text-base'
                             text='Export as PDF'
                         />
                     )}
@@ -54,10 +56,12 @@ const TopBar = () => {
                     }}
                 />
                 <Button
+                    className='text-sm md:text-base'
                     text='Export as CSV'
                     onClick={generateCSV}
                 />
                 <Button
+                    className='text-sm md:text-base'
                     text='Export as PNG'
                     onClick={generatePNG}
                 />

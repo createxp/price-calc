@@ -49,7 +49,7 @@ const ItemRow = ({
     }, [hours, rate])
 
     return (
-        <div className="flex gap-2">
+        <div className="flex gap-2 flex-col lg:flex-row">
             <Input
                 id='title'
                 name='title'
@@ -105,30 +105,32 @@ const ItemRow = ({
                     label: `${profile.name} - ${userCurrency.symbol} ${profile.hourlyRate}/hour`
                 }))}
             />
-            <Input
-                id='subtotal'
-                name='subtotal'
-                placeholder='Subtotal'
-                type='text'
-                value={`${userCurrency.symbol} ${total}`}
-                onChange={(e) => { }}
-                wrapperClassName='w-fit'
-                disabled
-            />
-            <div className='flex justify-center items-center pl-2'>
-                <FiTrash2
-                    size={20}
-                    color='red'
-                    className='cursor-pointer'
-                    onClick={() => {
-                        setState((prev) => {
-                            const newState = [...prev]
-                            // delete the item from the array with the id
-                            const filtered = newState.filter((item) => item.id !== id)
-                            return filtered
-                        })
-                    }}
+            <div className='flex gap-2'>
+                <Input
+                    id='subtotal'
+                    name='subtotal'
+                    placeholder='Subtotal'
+                    type='text'
+                    value={`${userCurrency.symbol} ${total}`}
+                    onChange={(e) => { }}
+                    wrapperClassName='lg:w-fit'
+                    disabled
                 />
+                <div className='flex justify-center items-center pl-2'>
+                    <FiTrash2
+                        size={20}
+                        color='red'
+                        className='cursor-pointer'
+                        onClick={() => {
+                            setState((prev) => {
+                                const newState = [...prev]
+                                // delete the item from the array with the id
+                                const filtered = newState.filter((item) => item.id !== id)
+                                return filtered
+                            })
+                        }}
+                    />
+                </div>
             </div>
         </div>
     )

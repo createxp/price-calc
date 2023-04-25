@@ -39,9 +39,8 @@ const Navbar = () => {
                         </div>
                     ))}
                 </div>
+                {/* Currency Selector & Profile */}
                 <div>
-                    {/* Currency Selector */}
-                    {/* Profile */}
                     <NavbarActions />
                 </div>
             </div>

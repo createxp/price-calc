@@ -5,7 +5,7 @@ import CreateNewProfile from './CreateNewProfile'
 const HourlyRateProfiles = () => {
     return (
         <div className='flex flex-col gap-8 items-center justify-center w-full'>
-            <h2 className='font-krona text-2xl w-full font-bold'>
+            <h2 className='font-krona text-xl md:text-2xl w-full font-bold'>
                 Your Hourly Rate Profiles
             </h2>
             <div className='flex flex-col justify-between w-full gap-10'>

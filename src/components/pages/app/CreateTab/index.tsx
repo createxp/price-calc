@@ -8,6 +8,7 @@ const CreateTab = () => {
         <div>
             {/* Hourly Rate Profiles */}
             <HourlyRateProfiles />
+            {/* Spacer */}
             <Spacer height='5rem' />
             {/* Price Calculator */}
             <PriceCalculator />

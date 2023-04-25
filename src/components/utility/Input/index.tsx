@@ -47,7 +47,7 @@ const Input = ({
                 wrapperClassName
             ].join(' ')}>
                 <label htmlFor={name} className={[
-                    'text-sm text-neutral-700 ml-1 whitespace-nowrap absolute -top-6',
+                    'text-sm text-neutral-700 ml-1 whitespace-nowrap md:absolute md:-top-6',
                     labelClassName
                 ].join(' ')}>
                     {label}
@@ -115,7 +115,7 @@ const Input = ({
             wrapperClassName
         ].join(' ')}>
             <label htmlFor={name} className={[
-                'text-sm text-neutral-700 ml-1 whitespace-nowrap absolute -top-6',
+                'text-sm text-neutral-700 ml-1 whitespace-nowrap md:absolute md:-top-6',
                 labelClassName
             ].join(' ')}>
                 {label}

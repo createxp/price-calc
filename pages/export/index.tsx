@@ -12,7 +12,7 @@ const Export = () => {
             <h2>
                 <span className='font-krona text-2xl font-bold'>Export Preview</span>
             </h2>
-            <div ref={pdfRef}>
+            <div ref={pdfRef} className='overflow-scroll w-full min-h-screen md:flex md:justify-center'>
                 {/* A4 Paper with the pricing table */}
                 <div className='w-[8.27in] h-[11.69in] bg-white p-6 rounded-lg'>
                     {/* Header */}
