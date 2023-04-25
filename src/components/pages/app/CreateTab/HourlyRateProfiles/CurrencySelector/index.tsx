@@ -22,7 +22,7 @@ const CurrencySelector = () => {
                     symbol: currencies.find((currency: Currency) => currency.code === e.target.value)?.symbol || ''
                 })}
                 fit
-                selectClassName='w-fit max-w-[180px]'
+                selectClassName='w-fit max-w-[120px] md:max-w-[180px]'
             />
         </div>
     )

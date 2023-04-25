@@ -1,12 +1,16 @@
 import { PrintHeader, PrintRow, TopBar } from '@/components/pages/export'
 import { Spacer } from '@/components/utility'
 import { useGlobals } from '@/contexts'
+import Head from 'next/head'
 import React from 'react'
 
 const Export = () => {
     const { pdfRef, rows, grandTotal, userCurrency } = useGlobals()
     return (
         <div className='flex flex-col justify-center items-center gap-6 p-6 bg-neutral-200'>
+            <Head>
+                <title>Export | Price-Calc by createxp</title>
+            </Head>
             <TopBar />
             <Spacer height='2' />
             <h2>

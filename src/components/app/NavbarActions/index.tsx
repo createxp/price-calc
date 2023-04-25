@@ -3,12 +3,10 @@ import React, { Fragment } from 'react'
 import { Menu, Transition } from '@headlessui/react'
 import { Pill } from '@/components/utility'
 import { FiInfo } from 'react-icons/fi'
-import CurrencySelector from './CurrencySelector'
 
 const NavbarActions = () => {
     return (
         <div className='absolute right-0 top-1/2 -translate-y-1/2 flex items-center gap-3'>
-            <CurrencySelector />
             <div className='w-10 h-10 rounded-full flex justify-center items-center border-2 border-neutral-800'>
                 <Menu>
                     <Menu.Button>

@@ -11,8 +11,9 @@ const Navbar = () => {
         <div className='bg-neutral-100 fixed top-0 z-50 lg:px-40 px-4 w-full shadow'>
             <div className='w-full flex justify-center items-center py-5 select-none relative'>
                 {/* Logo */}
-                <div className='absolute left-0 top-1/2 -translate-y-1/2'>
-                    <img src={"https://createxp.in/logos/logoCondensed.png"} alt="createxp" className='object-cover' width={128} />
+                <div className='absolute left-0 top-1/2 -translate-y-1/2 flex gap-2 justify-between items-center'>
+                    <img src={"/icon.png"} alt="createxp" className='object-cover rounded-full' width={40} />
+                    <span className='font-krona hidden md:flex'>Price-Calc</span>
                 </div>
                 {/* Tabs */}
                 <div className='flex gap-1 px-1 py-2 border border-neutral-800 w-fit rounded-full relative transition-all'>
