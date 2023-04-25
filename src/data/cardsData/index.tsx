@@ -8,7 +8,7 @@ const cards: {
         {
             icon: <FiDollarSign size={24} />,
             content:
-                "Say goodbye to guesswork and hello to accurate pricing. Our price calculator ensures you get paid what you deserve for your hard work",
+                "Say goodbye to guesswork and hello to accurate pricing. Our price calculator ensures you get paid what you deserve for your hard work.",
         },
         {
             icon: <RiCalculatorLine size={24} />,

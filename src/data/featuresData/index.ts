@@ -31,7 +31,7 @@ const features = [
     {
         img: '/features/export.png',
         title: 'Export/Download Quotations',
-        description: 'Once you have calculated your prices, you can easily export them as a CSV or download them as a PNG. This makes it easy to share your quotations with clients and keep track of your pricing history.'
+        description: 'Once you have calculated your prices, you can easily export them as a CSV, PNG, or PDF. This makes it easy to share your quotations with clients and keep track of your pricing history.'
     },
     {
         img: '/features/currency.png',
